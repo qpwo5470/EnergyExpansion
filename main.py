@@ -25,6 +25,7 @@ def serialthread(index):
             while True:
                 for c in ser.read_until():
                     c = chr(c)
+                    print(f'{c} in {index}')
                     if c in keys:
                         ser.write(b'K')
                         i = c
