@@ -24,6 +24,7 @@ def serialthread(index):
             ser = serial.Serial(ports[index], baud, timeout=0)
             while True:
                 for c in ser.read_until():
+                    c = chr(c)
                     if c in keys:
                         ser.write(b'K')
                         i = c
