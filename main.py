@@ -40,7 +40,7 @@ def serialthread(ser):
                     ser.reset_input_buffer()
                 else:
                     ser.write(b'N')
-                    time.sleep(10)
+                    time.sleep(20)
                     ser.write(b'F')
                     ser.reset_input_buffer()
 
