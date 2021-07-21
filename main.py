@@ -9,7 +9,7 @@ from audioplayer import AudioPlayer
 ports = ['/dev/ttyUSB0', '/dev/ttyUSB1', '/dev/ttyUSB2']
 keys = ['H', 'S', 'P']
 baud = 9600
-music = AudioPlayer('music.mp3')
+music = AudioPlayer('/home/silo/EnergyExpansion/music.mp3')
 
 serials = []
 threads = []
