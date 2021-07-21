@@ -28,15 +28,16 @@ def serialthread(ser):
     while True:
         for c in ser.read_until():
             c = chr(c)
-            print(f'{c} in {i}')
             if c in keys:
                 ser.write(b'K')
                 i = c
             if c == 'B':
+                print(f'{c} in {i}')
                 if i == 'S':
                     music.play(block=False)
                     time.sleep(10)
                     music.stop()
+                    ser.reset_input_buffer()
                 else:
                     ser.write(b'N')
                     time.sleep(10)
