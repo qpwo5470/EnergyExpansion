@@ -9,7 +9,7 @@ from audioplayer import AudioPlayer
 ports = ['/dev/ttyUSB0', '/dev/ttyUSB1', '/dev/ttyUSB2']
 keys = ['H', 'S', 'P']
 baud = 9600
-music = AudioPlayer('music.flac')
+music = AudioPlayer('music.mp3')
 
 
 def serialthread(index):
@@ -23,23 +23,26 @@ def serialthread(index):
         try:
             ser = serial.Serial(ports[index], baud, timeout=0)
             while True:
-                for c in ser.read_until():
-                    c = chr(c)
-                    print(f'{c} in {index}')
-                    if c in keys:
-                        ser.write(b'K')
-                        i = c
-                        print(f'{index} is {i}')
-                    if c == 'B':
-                        if i == 'S':
-                            music.play(block=False)
-                            time.sleep(10)
-                            music.stop()
-                        else:
-                            ser.write(b'N')
-                            time.sleep(10)
-                            ser.write(b'F')
-                            ser.reset_input_buffer()
+                try:
+                    for c in ser.read_until():
+                        c = chr(c)
+                        print(f'{c} in {index}')
+                        if c in keys:
+                            ser.write(b'K')
+                            i = c
+                            print(f'{index} is {i}')
+                        if c == 'B':
+                            if i == 'S':
+                                music.play(block=False)
+                                time.sleep(10)
+                                music.stop()
+                            else:
+                                ser.write(b'N')
+                                time.sleep(10)
+                                ser.write(b'F')
+                                ser.reset_input_buffer()
+                except:
+                    pass
 
 
         except:
