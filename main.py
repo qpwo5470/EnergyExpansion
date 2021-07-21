@@ -6,6 +6,21 @@ import time
 import threading
 from audioplayer import AudioPlayer
 
+import logging
+
+logger = logging.getLogger(__name__)
+
+formatter = logging.Formatter('[%(asctime)s][@%(lineno)3s] %(message)s', "%m/%d %H:%M:%S")
+streamHandler = logging.StreamHandler()
+fileHandler = logging.FileHandler('/var/www/module/PriceWatcher.log')
+
+streamHandler.setFormatter(formatter)
+fileHandler.setFormatter(formatter)
+
+logger.addHandler(streamHandler)
+logger.addHandler(fileHandler)
+logger.setLevel(level=logging.DEBUG)
+
 time.sleep(10)
 
 ports = ['/dev/ttyUSB0', '/dev/ttyUSB1', '/dev/ttyUSB2']
@@ -24,6 +39,7 @@ def serialthread(ser):
     global ports
     global keys
     global music
+    global logger
 
     i = '-'
 
@@ -34,7 +50,7 @@ def serialthread(ser):
                 ser.write(b'K')
                 i = c
             if c == 'B':
-                print(f'{c} in {i}')
+                logger.debug(f'{c} in {i}')
                 if i == 'S':
                     music.play(block=False)
                     time.sleep(10)
