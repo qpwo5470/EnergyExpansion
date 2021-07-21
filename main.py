@@ -27,6 +27,7 @@ def serialthread(index):
                     if c in keys:
                         ser.write(b'K')
                         i = c
+                        print(f'{index} is {i}')
                     if c == 'B':
                         if i == 'S':
                             music.play(block=False)
