@@ -21,7 +21,7 @@ def serialthread(index):
 
     while True:
         try:
-            ser = serial.Serial(ports, baud, timeout=0)
+            ser = serial.Serial(ports[index], baud, timeout=0)
             while True:
                 for c in ser.read_until():
                     print(c)
