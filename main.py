@@ -6,6 +6,8 @@ import time
 import threading
 from audioplayer import AudioPlayer
 
+time.sleep(10)
+
 ports = ['/dev/ttyUSB0', '/dev/ttyUSB1', '/dev/ttyUSB2']
 keys = ['H', 'S', 'P']
 baud = 9600
