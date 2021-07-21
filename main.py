@@ -41,7 +41,7 @@ def serialthread(index):
 
 
         except:
-            print('cant connect')
+            print(f'cant connect {index}')
             pass
 
 
