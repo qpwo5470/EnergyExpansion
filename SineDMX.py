@@ -26,11 +26,11 @@ class SineDMX:
         while True:
             for i in reversed(range(self.speed*3, len(self.map))):
                 self.fixture.copy(i, i-self.speed*3)
-            if self.flowing:
-                sine_val = (math.sin(self.angle)+1)*self.brightness
-            else:
-                sine_val = 0
             for i in range(self.speed):
+                if self.flowing:
+                    sine_val = (math.sin(self.angle+math.floor(i/3)*(1/self.width))+1)*self.brightness
+                else:
+                    sine_val = 0
                 self.fixture.set(0+i*3, sine_val*self.color[0])
                 self.fixture.set(1+i*3, sine_val*self.color[1])
                 self.fixture.set(2+i*3, sine_val*self.color[2])
