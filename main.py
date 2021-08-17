@@ -11,7 +11,7 @@ time.sleep(10)
 
 mc = MonitoringClient('http://34.64.189.234/post.php')
 
-target_ip = '192.168.0.115'
+target_ip = '192.168.1.115'
 
 maps = [[(7, c) for c in reversed(range(0, 369))] + [(6, c) for c in reversed(range(0, 512))],
         [(5, c) for c in reversed(range(72))] + [(4, c) for c in reversed(range(0, 512))] + [(3, c) for c in reversed(range(0, 512))],
