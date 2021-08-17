@@ -77,6 +77,7 @@ def serialThread(ser):
         c = ser.read()
         if len(c):
             msg = c
+            print(msg)
 
 def playThread():
     global states
