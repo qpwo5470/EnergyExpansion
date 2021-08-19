@@ -18,10 +18,15 @@ maps = [[(7, c) for c in reversed(range(0, 369))] + [(6, c) for c in reversed(ra
         [(2, c) for c in reversed(range(0, 472))] + [(1, c) for c in reversed(range(0, 512))]]
 dmx = [SineDMX(target_ip, map, fps=120, speed=3, width=5, brightness=150, color=(1, 1, 1)) for map in maps]
 
+dmx.append(
+    SineDMX(target_ip, [(0, 0), (0, 1), (0, 2)], fps=120, speed=1, width=5, brightness=255, color=(0.3, 0.3, 0.3),
+            color_mode=True))
+
 
 port = '/dev/ttyUSB0'
 baud = 9600
 states = [False, False, False]
+col = [0.3, 0.3, 0.3]
 
 serial = serial.Serial(port, baud, timeout=0)
 msg = '-'
@@ -30,9 +35,13 @@ def on(i):
     global serial
     global states
     global dmx
+    global col
+
     ons = [b'p', b's', b'h']
     if not states[i]:
         states[i] = True
+        col[i] = 1
+        dmx[3].colorize(col)
         dmx[i].flow(True)
         serial.write(ons[i])
         if i == 1:
@@ -51,7 +60,10 @@ def off(i):
 
 def dmxOff(i):
     global dmx
+    global col
+    col[i] = 0.3
     dmx[i].flow(False)
+    dmx[3].colorize(col)
 
 def playMusic():
     global states
