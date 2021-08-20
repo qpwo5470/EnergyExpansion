@@ -19,7 +19,7 @@ maps = [[(7, c) for c in reversed(range(0, 369))] + [(6, c) for c in reversed(ra
 dmx = [SineDMX(target_ip, map, fps=120, speed=3, width=5, brightness=150, color=(1, 1, 0.8)) for map in maps]
 
 dmx.append(
-    SineDMX(target_ip, [(0, 0), (0, 1), (0, 2)], fps=120, speed=1, width=5, brightness=255, color=(0, 0, 0),
+    SineDMX(target_ip, [(0, 0), (0, 1), (0, 2)], fps=120, speed=1, width=5, brightness=255, color=(0.02, 0.02, 0.02),
             color_mode=True))
 
 
@@ -61,7 +61,7 @@ def off(i):
 def dmxOff(i):
     global dmx
     global col
-    col[i] = 0.0
+    col[i] = 0.02
     dmx[i].flow(False)
     dmx[3].colorize(col)
 
