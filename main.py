@@ -61,7 +61,7 @@ def off(i):
 def dmxOff(i):
     global dmx
     global col
-    col[i] = 0.3
+    col[i] = 0.0
     dmx[i].flow(False)
     dmx[3].colorize(col)
 
