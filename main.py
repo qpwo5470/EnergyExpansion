@@ -16,17 +16,17 @@ target_ip = '192.168.1.115'
 maps = [[(7, c) for c in reversed(range(0, 369))] + [(6, c) for c in reversed(range(0, 512))],
         [(5, c) for c in reversed(range(72))] + [(4, c) for c in reversed(range(0, 512))] + [(3, c) for c in reversed(range(0, 512))],
         [(2, c) for c in reversed(range(0, 472))] + [(1, c) for c in reversed(range(0, 512))]]
-dmx = [SineDMX(target_ip, map, fps=120, speed=3, width=5, brightness=150, color=(1, 1, 1)) for map in maps]
+dmx = [SineDMX(target_ip, map, fps=120, speed=3, width=5, brightness=150, color=(1, 1, 0.8)) for map in maps]
 
 dmx.append(
-    SineDMX(target_ip, [(0, 0), (0, 1), (0, 2)], fps=120, speed=1, width=5, brightness=255, color=(0.3, 0.3, 0.3),
+    SineDMX(target_ip, [(0, 0), (0, 1), (0, 2)], fps=120, speed=1, width=5, brightness=255, color=(0, 0, 0),
             color_mode=True))
 
 
 port = '/dev/ttyUSB0'
 baud = 9600
 states = [False, False, False]
-col = [0.3, 0.3, 0.3]
+col = [0, 0, 0]
 
 serial = serial.Serial(port, baud, timeout=0)
 msg = '-'

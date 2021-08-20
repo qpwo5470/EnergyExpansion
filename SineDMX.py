@@ -32,10 +32,11 @@ class SineDMX:
     def loop(self):
         while True:
             if self.color_mode:
+                br = float(self.brightness)
                 for i in range(0, len(self.map), 3):
-                    self.fixture.set(i, self.color[i]*self.brightness)
-                    self.fixture.set(i+1, self.color[i+1]*self.brightness)
-                    self.fixture.set(i+2, self.color[i+2]*self.brightness)
+                    self.fixture.set(i, self.color[i]*br)
+                    self.fixture.set(i+1, self.color[i+1]*br)
+                    self.fixture.set(i+2, self.color[i+2]*br)
             else:
                 for i in reversed(range(self.speed * 3, len(self.map))):
                     self.fixture.copy(i, i - self.speed * 3)
