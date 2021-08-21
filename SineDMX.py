@@ -29,6 +29,12 @@ class SineDMX:
         self.color_mode = True
         self.color = col
 
+    def map_value(self, src, src_min, src_max, dst_min, dst_max):
+        return (src-src_min)/(src_max-src_min) * (dst_max-dst_min) + dst_min
+
+    def constrain(self, src, dst_min, dst_max):
+        return min(max(src, dst_min), dst_max)
+
     def loop(self):
         while True:
             if self.color_mode:
@@ -42,7 +48,7 @@ class SineDMX:
                     self.fixture.copy(i, i - self.speed * 3)
                 for i in range(self.speed):
                     if self.flowing:
-                        sine_val = (math.sin(self.angle + math.floor(i / 3) * (1 / self.width)) + 1) * self.brightness
+                        sine_val = self.constrain(self.map_value(math.sin(self.angle + math.floor(i / 3) * (1 / self.width)), -1, 1, -200, self.brightness), 0, self.brightness)
                     else:
                         sine_val = 0
                     self.fixture.set(0 + i * 3, sine_val * self.color[0])
