@@ -42,7 +42,6 @@ def on(i):
         states[i] = True
         col[i] = 1
         dmx[3].colorize(col)
-        dmx[i].setSpeed(4.0)
         dmx[i].flow(True)
         serial.write(ons[i])
         if i == 1:
