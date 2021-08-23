@@ -16,10 +16,10 @@ target_ip = '192.168.1.115'
 maps = [[(7, c) for c in reversed(range(0, 369))] + [(6, c) for c in reversed(range(0, 510))],
         [(5, c) for c in reversed(range(72))] + [(4, c) for c in reversed(range(0, 510))] + [(3, c) for c in reversed(range(0, 510))],
         [(2, c) for c in reversed(range(0, 471))] + [(1, c) for c in reversed(range(0, 510))]]
-dmx = [SineDMX(target_ip, map, fps=120, speed=2, width=6, brightness=150, color=(0.7, 1, 1)) for map in maps]
+dmx = [SineDMX(target_ip, map, fps=120, speed=4, width=15, brightness=120, color=(0.10, 0.9, 0.72)) for map in maps]
 
 dmx.append(
-    SineDMX(target_ip, [(0, 0), (0, 1), (0, 2)], fps=120, speed=4, width=15, brightness=120, color=(0.10, 0.9, 0.72),
+    SineDMX(target_ip, [(0, 0), (0, 1), (0, 2)], fps=120, speed=1, width=5, brightness=255, color=(0.02, 0.02, 0.02),
             color_mode=True))
 
 
