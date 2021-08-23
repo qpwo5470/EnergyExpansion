@@ -59,6 +59,6 @@ class SineDMX:
                     self.fixture.set(1 + i * 3, sine_val * self.color[1])
                     self.fixture.set(2 + i * 3, sine_val * self.color[2])
                 if self.speed > 1.01:
-                    self.speed -= 0.01
+                    self.speed -= 0.03
                 self.angle += 1 / self.width
             time.sleep(1 / self.fps)
