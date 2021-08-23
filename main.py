@@ -25,7 +25,7 @@ dmx.append(
 
 port = '/dev/ttyUSB0'
 baud = 9600
-states = [False, False, False]
+states = [True, False, False]
 col = [0.0, 0.0, 0.0]
 
 serial = serial.Serial(port, baud, timeout=0)
