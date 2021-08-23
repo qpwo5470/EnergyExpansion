@@ -25,6 +25,9 @@ class SineDMX:
         self.flowing = state
         self.dim = False
 
+    def setSpeed(self, speed):
+        self.speed = speed
+
     def colorize(self, col):
         self.color_mode = True
         self.color = col
